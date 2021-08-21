@@ -9,11 +9,13 @@ import ItemCard from './Card';
 
 
 function list(props) {
+    console.log('props.list',props.list)
     const settingContext = useContext(SettingContext);
 
     const [index, setIndex] = useState(0);
     const [stopIndex, setStopIndex] = useState(settingContext.pageItems);
-    // console.log('props/list', listContext);
+    console.log('itemperPage/list', settingContext.pageItems);
+  
     let length = props.list.length;
 
 
@@ -21,6 +23,7 @@ function list(props) {
 
     function nextPage() {
         if (stopIndex < length) {
+            console.log('stopIndex/list', stopIndex);
             setIndex(index + settingContext.pageItems);
             setStopIndex(stopIndex + settingContext.pageItems);
         }
@@ -35,6 +38,7 @@ function list(props) {
     return (
         <div>
             <ListGroup>
+   
 
                 {props.list.filter(item => (settingContext.completed ? true : !item.complete)).sort((item1, item2) => {
                     let x;

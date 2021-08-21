@@ -8,21 +8,7 @@ import { Button, Card, Elevation } from "@blueprintjs/core";
 function ItemCard(props) {
   return (
     <div>
-      {/* <Card>
-                <Card.Header>Featured
-                 <CloseButton onClick={props.callToggle} />
-                 <CloseButton onClick={props.callDelete} /></Card.Header>
-                <Card.Body>
-                    <Card.Title>{props.title}</Card.Title>
-                    <Card.Text>
-                        With supporting text below as a natural lead-in to additional content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                </Card.Body>
-            </Card> */}
-
-
-
+    
 
       <BootStrapCard
         style={{

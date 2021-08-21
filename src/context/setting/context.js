@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 export const SettingContext = React.createContext();
 
 function SettingtProvider(props) {
-    const [pageItems, setPageItem] = useState(4);
+    const [pageItems, setPageItems] = useState(3);
     const [sorted, setSorted] = useState('Ascending');
     const [completed, setCompleted] = useState(false);
 
     const settingStata = {
         pageItems,
-        setPageItem,
+        setPageItems,
         sorted,
         setSorted,
         completed,

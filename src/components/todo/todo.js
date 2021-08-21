@@ -11,6 +11,7 @@ import List from './list';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ToDoForm from './list';
+import Update from './update';
 
 
 
@@ -75,7 +76,7 @@ export const ToDo = () => {
     setValues(values => ({ ...values, [event.target.name]: event.target.value }));
   };
   // useEffect(() => {
-  //   let list = [
+  //   let listCon = [
   //     { _id: 1, complete: false, text: 'do assignments', difficulty: 5, assignee: 'Ayah' },
   //     { _id: 2, complete: true, text: 'study to the exam', difficulty: 5, assignee: 'Ayah' },
   //     { _id: 3, complete: true, text: 'Buying things for the house ', difficulty: 1, assignee: 'Ahmad' },
@@ -83,7 +84,7 @@ export const ToDo = () => {
 
 
   //   ]
-  //   setList(list);
+  //   setList(listCon);
   // }, [])
 
   useEffect(() => {
@@ -112,6 +113,7 @@ export const ToDo = () => {
     <>
 
       <Header incomplete={incomplete} />
+      <Update />
       {/* <header>
         <h2>
           There are {list.filter((item) => !item.complete).length} Items To
