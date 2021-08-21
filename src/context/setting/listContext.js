@@ -1,7 +1,9 @@
 import React from 'react'
 export const ListContext = React.createContext();
 import { useState } from 'react';
+import { useEffect } from 'react';
 function listContext(props) {
+    const [storge, setStorge] = useState(0)
     const [list, setList] = useState(
         [
             { _id: 1, complete: false, text: 'do assignments', difficulty: 5, assignee: 'Ayah' },
@@ -14,6 +16,8 @@ function listContext(props) {
 
         ]
     )
+
+
 
 
     function addItem(item) {
@@ -38,6 +42,12 @@ function listContext(props) {
         }
     }
 
+    function save(e) {
+        e.preventDefaulte();
+        const element = { number: e.target.pageNumber.value, complete: e.target.incomplete.value }
+        //    localStorage.setItem(
+    }
+
     return (
         <div>
             <ListContext.Provider value={{ list, addItem, toggleComplete }}>
@@ -54,34 +64,4 @@ function listContext(props) {
 
 
 export default listContext
-
-// import React from 'react'
-
-// export const PageContext = React.createContext();
-// function PageProvider(props) {
-//     const [display, setDisplay] = useState(false);
-//     const [itemCount, setItemCount] = useState(3);
-//     const [sortField, setSortField] = useState('difficulty');
-//     const [startingPage, setStartingPage] = useState(1);
-
-
-//     const state = {
-//         display,
-//         setDisplay,
-//         itemCount,
-//         setItemCount,
-//         sortField,
-//         setSortField,
-//         startingPage,
-//         setStartingPage,
-
-//     }
-//     return (
-//         <PageContext.Provider value={state}>
-//             {props.children}
-//         </PageContext.Provider>
-//     )
-// }
-
-// export default PageProvider
 
