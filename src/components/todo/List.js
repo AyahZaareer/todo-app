@@ -25,8 +25,11 @@ function List(props) {
 
 
   function previous() {
-    setStartIndex(startIndex - itemNumber);
-    setEndIndex(endIndex - itemNumber);
+    if (startIndex > 0) {
+      setStartIndex(startIndex - itemNumber);
+      setEndIndex(endIndex - itemNumber);
+    }
+
   }
 
   //   function next() {
@@ -132,7 +135,7 @@ function List(props) {
           weidth: '20rem',
           margin: '1rem',
           marginRight: '20rem',
-          fontWeight:'bolder'
+          fontWeight: 'bolder'
         }}> Change Items Per Page</Label>
 
         <input style={{
@@ -150,7 +153,7 @@ function List(props) {
 
         marginRight: '20rem',
         weidth: '20rem',
-        
+
         // display: 'flex',
       }} className={a} onClick={displayComplete}>
         incomplete
