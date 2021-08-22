@@ -11,7 +11,7 @@
 
 
 ## Pull Request:
-  - **pull-request#1** :[URL]()
+  - **pull-request#1** :[URL](https://github.com/AyahZaareer/todo-app/pull/3)
   - **pull-request#2** :[URL](https://github.com/AyahZaareer/todo-app/pull/4)
   - **pull-request#3** :[URL]()
   - **pull-request#4** :[URL]()
