@@ -1,139 +1,8 @@
-// import React, { useState } from 'react';
-// export const SettingContext = React.createContext();
-// import { useEffect } from 'react';
-// import cookie from 'react-cookie';
-// function SettingtProvider(props) {
-//     const [itemPerPage, setItemPerPage] = useState(3);
-
-
-//     const [difficulty, setDifficulty] = useState('Ascending');
-
-//     const [showCompleted, setShowCompleted] = useState(false);
-
-
-//     // const handleSubmit = async (event) => {
-//     //     if (event) event.preventDefault();
-//     //     // callback(values);
-//     //     // values._id = uuid();
-//     //     values.complete = false;
-//     //     let incompleteCount = list.filter((item) => !item.complete).length;
-//     //     setIncomplete(incompleteCount);
-//     //     event.target.reset();
-//     //     setList([...list, values]);
-
-//     //     const token = cookie.load('auth');
-
-//     //     const config = {
-//     //         headers: { Authorization: `Bearer ${token}` },
-//     //     };
-//     //     await axios.post(`${API}/todo`, values, config);
-//     // }
-
-//     // const handleChange = (event) => {
-//     //     setValues(values => ({ ...values, [event.target.name]: event.target.value }));
-//     // };
-
-//     // async function toggleComplete(id) {
-
-//     //     let obj;
-//     //     let completedItem = list.map(item => {
-//     //         if (item._id === id) {
-//     //             item.complete = !item.complete;
-//     //             obj = { complete: item.complete }
-//     //         }
-//     //         return item;
-//     //     });
-
-//     //     setList(completedItem);
-//     //     const token = cookie.load('auth');
-//     //     const config = {
-//     //         headers: { Authorization: `Bearer ${token}` },
-//     //     };
-//     //     await axios.put(`${API}/todo/${id}`, obj, config);
-//     // }
-//     // function handleNumber(e) {
-//     //     setNumber(Number(e.target.value));
-//     // }
-
-
-//     // function handleIncomplete() {
-//     //     setshowIncomplete(!showIncomplete);
-//     // }
-
-//     // async function deleteItem(id) {
-//     //     const items = list.filter(item => item.id !== id);
-//     //     setList(items);
-//     //     const token = cookie.load('auth');
-//     //     const config = {
-//     //         headers: { Authorization: `Bearer ${token}` },
-//     //     };
-//     //     await axios.delete(`${API}/todo/${id}`, config);
-//     // }
-
-//     // function save(e) {
-//     //     e.preventDefault();
-//     //     const obj = { number: e.target.pageNumber.value, showIncomplete: e.target.incomplete.value };
-//     //     localStorage.setItem('settings', JSON.stringify(obj));
-//     //     setLocalStorage(storage + 1);
-//     // }
-
-//     // useEffect(() => {
-//     //     let local = localStorage.getItem('settings');
-//     //     if (local) {
-//     //         let settings = JSON.parse(local);
-//     //         setNumber(Number(settings.number));
-//     //         if (settings.showIncomplete == 'true') setShowIncomplete(true);
-//     //         if (settings.showIncomplete == 'false') setShowIncomplete(false);
-//     //     }
-//     // }, [storge])
-
-//     // useEffect(async () => {
-//     //     const token = cookie.load('auth');
-//     //     const config = {
-//     //         headers: { Authorization: `Bearer ${token}` },
-//     //     };
-//     //     const request = await axios.get(`${API}/todo/`, config);
-//     //     setList(request.data);
-
-//     // }, [])
-
-
-//     const settingStata = {
-
-//         showCompleted,
-//         difficulty,
-//         itemPerPage,
-//         setShowCompleted,
-//         setDifficulty,
-//         setItemPerPage
-
-
-
-//     }
-
-//     // useEffect(() => {
-//     //     const localSetting = JSON.parse(localStorage.getItem('setting'));
-//     //     if (localSetting) {
-//     //         setPageItems(Number(localSetting.pageItems));
-//     //         setCompleted(completed);
-//     //     }
-//     // }, [])
-//     return (
-//         <SettingContext.Provider value={settingStata}>
-//             {props.children}
-//         </SettingContext.Provider>
-//     )
-// }
-
-// export default SettingtProvider
-
-
-
 
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
 import { v4 as uuid } from 'uuid';
-import { AuthContext } from '../../context/auth/auth'
+// import { AuthContext } from '../auth/auth'
 export const ListContext = React.createContext();
 
 
@@ -144,7 +13,7 @@ function List(props) {
     const [itemNumber, setItemNumber] = useState();
     const [a, setA] = useState("on");
     const [done, setDone] = useState([]);
-    const { user } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext);
 
 
     let API_TO = 'https://api-js401.herokuapp.com/api/v1/todo'

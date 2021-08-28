@@ -77,89 +77,77 @@
 
 
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../context/auth/auth';
+import { AuthContext } from '../../context/setting/authcon';
 import { FormGroup, InputGroup, Button, Card, Label } from "@blueprintjs/core";
 import "./todo.css";
+import { If, Else, Then } from 'react-if'
 function Signup(props) {
 
-  const { loggedIn, setLoggedIn, user, setUser, validateToken, logout, login, setLoginState, signup } = useContext(AuthContext);
+  const context = useContext(AuthContext);
 
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  // const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [role, setRole] = useState('user');
 
-  const handleChange = (e) => {
-    if (e.target.name === 'username') {
-      console.log(e.target.value);
-      setUsername(e.target.value);
-    } else if (e.target.name === 'password') {
-      console.log(e.target.value);
-      setPassword(e.target.value);
-    } else {
-      console.log(e.target.value);
-      setRole(e.target.value);
-    }
-  };
+  // const handleChange = (e) => {
+  //   if (e.target.name === 'username') {
+  //     console.log(e.target.value);
+  //     setUsername(e.target.value);
+  //   } else if (e.target.name === 'password') {
+  //     console.log(e.target.value);
+  //     setPassword(e.target.value);
+  //   } else {
+  //     console.log(e.target.value);
+  //     setRole(e.target.value);
+  //   }
+  // };
 
-  const handleSubmit = (e) => {
+  function changeUsername(e) {
+    setUsername(e.target.value);
+  }
+
+  function changePassword(e) {
+    setPassword(e.target.value);
+  }
+
+
+
+  function handleChangeRole(e) {
+    setRole(e.target.value);
+  }
+
+  function handleSubmitSignup(e) {
     e.preventDefault();
-    signup(username, password, role);
+    context.signup(email,
+      username,
+      password,
+      role);
+    console.log('signup',context)
   };
 
   return (
-    <div
+    <If condition={context.loggedIn}>
+      <Then>
+        <div></div>
+      </Then>
+      <Else>
 
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
+        <form style={{ marginLeft: '50px' }}>
+          <input type="text" name="username" placeholder="Enter Username" onChange={changeUsername}
+            style={{ borderRadius: '5px', width: '120px', margin: '13px' }} />
+          <input type="password" name="password" placeholder="Enter password" onChange={changePassword} style={{ borderRadius: '5px', width: '120px', margin: '13px' }} />
 
-      <h1 id="contained-modal-title-vcenter">Signup</h1>
+          <select name="roles" id="roles" onChange={handleChangeRole} style={{ borderRadius: '5px', height: '25px', marginRight: '20px' }}>
+            <option value="user">user</option>
+            <option value="editor" >editor</option> <option value="admin">admin</option>
+          </select>
 
-      <card className='app' intent="danger" style={{
-        'margin-top': '0rem'
-      }}>
-        <FormGroup intent="danger">
-          <FormGroup controlId="formBasicUsername">
-            <label>Username</label>
-            <InputGroup
-              intent="danger"
-              onChange={handleChange}
-              name="username"
-              required
-              type="text"
-              placeholder="Enter username"
-            />
-          </FormGroup  >
-          <FormGroup controlId="formBasicPassword" intent="danger">
-            <Label intent="danger">Password</Label>
-            <InputGroup
-              intent="danger"
-              onChange={handleChange}
-              name="password"
-              required
-              type="password"
-              placeholder="Password"
-            />
-          </FormGroup>
-
-          <FormGroup intent="danger">
-            <Label intent="danger">Role</Label>
-            <select onChange={handleChange} name="role" as="select">
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
-            </select>
-          </FormGroup>
-        </FormGroup>
-
-
-        <Button intent="danger" onClick={handleSubmit}>
-          Signup
-        </Button>
-      </card>
-    </div>
+          <button style={{ borderRadius: '5px', width: '70px', height: '30px', }} onClick={handleSubmitSignup}>SignUp</button>
+        </form>
+      </Else>
+    </If>
   );
 }
 

@@ -130,13 +130,15 @@ function List(props) {
   return (
     <div style={{ textAlign: 'center', marginTop: '100px' }} >
       <Label>
+
         <Label style={{
 
           weidth: '20rem',
           margin: '1rem',
-          marginRight: '20rem',
+          marginRight: '60rem',
           fontWeight: 'bolder'
         }}> Change Items Per Page</Label>
+
 
         <input style={{
 
@@ -144,9 +146,14 @@ function List(props) {
 
           weidth: '20rem',
           margin: '1rem',
-          marginRight: '20rem',
-        }} onChange={handlePaginationChange} defaultValue={endIndex} type="range" min={1} max={5} name="items-per-page" />
+          marginRight: '60rem',
+        }} onChange={handlePaginationChange} defaultValue={endIndex} type="text" min={1} max={5} name="items-per-page" />
+
+
       </Label>
+      {/* <button onClick={handlePaginationChange}style={{ marginRight: '50rem', marginTop: '' }}>change</button> */}
+
+
 
       <button style={{
 

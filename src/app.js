@@ -32,31 +32,74 @@
 
 import React from 'react';
 import ToDo from './components/todo/todo';
-import Login from './components/todo/login';
-import AuthProvider from './context/auth/auth';
+
+import AuthProvider from './context/setting/authcon';
+import SettingProvider from './context/setting/Setting'
 // import Signup from './components/todo/';
-import Auth from './components/todo/auth';
+import Auth from './components/todo/auth0';
 import ListContext from './context/setting/Setting';
 import NavBar from './components/todo/NavBar';
+import { AuthContext } from './context/setting/authcon';
+import { useContext } from 'react';
+import { If, Else, Then } from 'react-if';
 
 
+const DeleteLink = () => {
+  return (
+    <Auth capability="delete">
+      <span>Delete</span>
+    </Auth>
+  );
+};
+
+
+const EditLink = () => {
+  return (
+    <Auth capability="update">
+      <span>Edit</span>
+    </Auth>
+  );
+};
 
 
 
 
 
 function App(props) {
+  const contextType = useContext(AuthContext)
+  console.log('app/context',props);
   return (
-    <AuthProvider>
-      <NavBar />
+    <>
+      <AuthProvider>
+          <NavBar />
 
-      {/* <Auth capability="read"> */}
-        <ListContext>
-          <ToDo />
-        </ListContext>
-      {/* </Auth> */}
-    </AuthProvider>
+
+
+          <If condition={AuthContext.loggedIn}>
+        <SettingProvider>
+            <Then>
+
+              <ListContext>
+                <EditLink />
+                <DeleteLink />
+
+
+                <ToDo />
+              </ListContext>
+            </Then>
+            <Else>
+              <div></div>
+            </Else>
+
+        </SettingProvider>
+          </If>
+      </AuthProvider>
+
+
+
+    </>
   )
 }
 
 export default App
+
