@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/todo/todo.css"],"names":[],"mappings":"AAAA,KACI,YAAa,CACb,sBAAuB,CACvB,aACF,CACA,KACE,kBAAmB,CACnB,UACF","file":"main.e7ba8372.chunk.css","sourcesContent":[".app {\n    display: flex;\n    justify-content: center;\n    margin-top: 8%\n  }\n  .btn {\n    font-weight: bolder;\n    width: 8rem;\n  }"]}

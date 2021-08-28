@@ -3,7 +3,7 @@
 //     return props.condition ? props.children : null;
 // };
 // class Login extends React.Component {
-//     static contextType = LoginContext;
+//     static AuthContext = LoginContext;
 
 //     constructor(props) {
 //         super(props);
@@ -52,7 +52,7 @@
 
 
 import React, { Component, useState, useContext } from 'react'
-import { AuthContext } from '../../context/auth/auth';
+import { AuthContext } from '../../context/setting/authcon';
 import { Card, Button, Icon, Label } from "@blueprintjs/core";
 import { If, Else, Then } from 'react-if';
 
@@ -60,37 +60,40 @@ import { If, Else, Then } from 'react-if';
 
 
 function Login(props) {
-    const { loggedIn, setLoggedIn, user, setUser, validateToken, logout, login, setLoginState } = useContext(AuthContext);
+    const authContext = useContext(AuthContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("")
 
 
-    const contextType = AuthContext
-    const handleChange = (e) => {
+    console.log('loginnnnnnnn',authContext.loggedIn)
+    const handleChangeUser = (e) => {
         setUsername(e.target.value)
     }
-    const handleChange1 = (e) => {
+    const handleChangePass = (e) => {
         setPassword(e.target.value)
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        login(username, password)
+        authContext.login(username, password)
+       
     }
 
     return (
+        
         <div>
-            <If condition={loggedIn}>
+            <If condition={authContext.loggedIn}>
                 <Then>
-                    <Button intent="danger" onClick={logout} style={{
+                    <Button intent="danger" onClick={authContext.logout} style={{
                         "margin-left": "1171px",
                         "margin-top": "18px"
                     }}>Logout</Button>
                 </Then>
                 <Else>
-                    <form style={{ "width": "28rem", "margin-left": "auto", "margin-top": "0px", "padding-top": "11px" }}>
-                        <input type="text" name="username" placeholder="Enter Username" onChange={handleChange} />
-                        <input type="password" name="password" placeholder="Enter Password" onChange={handleChange1} />
-                        <Button intent="danger" onClick={handleSubmit}>Login</Button>
+                    <form  onSubmit={handleSubmit}
+                    style={{ "width": "28rem", "margin-left": "auto", "margin-top": "0px", "padding-top": "11px" }}>
+                        <input type="text" name="username" placeholder="Enter Username" onChange={handleChangeUser} />
+                        <input type="password" name="password" placeholder="Enter Password" onChange={handleChangePass} />
+                        <Button intent="danger">Login</Button>
                     </form>
                 </Else>
             </If>

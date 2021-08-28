@@ -31,7 +31,7 @@ function SettingsPage(props) {
     }
     return (
         <div>
-            <If condition={context.loggedIn}>
+            <If condition={AuthContext.loggedIn}>
                 <Then>
                     <div>
                         <Button onClick={_toggleVisibility} > {(settings.showCompleted) ? 'Hide Completed' : 'Show Completed'}</Button>
